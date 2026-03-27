@@ -1,0 +1,1 @@
+console.log("inject ts from .ts file")
