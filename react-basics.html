@@ -14,10 +14,6 @@
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-        const div_native_dom = document.createElement('div-native-dom')
-        div_native_dom.textContent = "div created from web api object document"
-        document.body.appendChild(div_native_dom)
-
         const div_jsx = <div> div created from jsx</div>
         const container = document.querySelector('.js-container');
         ReactDOM.createRoot(container).render(div_jsx);
