@@ -46,8 +46,7 @@
             )
         }
 
-
-        function App() {
+        function ChatMessages() {
             const chatMessages = [
                 {
                     id: "1",
@@ -63,16 +62,26 @@
 
             return (
                 <>
+                    {
+                        chatMessages.map((chatMessage) => {
+                            return (
+                                <ChatMessage
+                                    key={chatMessage.id}
+                                    message={chatMessage.message}
+                                    sender={chatMessage.sender}
+                                />
+                            )
+                        })
+                    }
+                </>
+            )
+        }
+
+        function App() {
+            return (
+                <>
                     <ChatInput />
-                    {chatMessages.map((chatMessage) => {
-                        return (
-                            <ChatMessage
-                                key={chatMessage.id}
-                                message={chatMessage.message}
-                                sender={chatMessage.sender}
-                            />
-                        )
-                    })}
+                    <ChatMessages />
                 </>
             )
         }
