@@ -27,28 +27,23 @@
         }
 
         function ChatMessage({ message, sender }) {
-            if (sender === "user") {
-                return (
-                    <div>
-                        {message}
-                        <img
-                            src={"image/user.png"}
-                            width="50"
-                        />
-                    </div>
-                )
-            }
-            else if (sender === "robot") {
-                return (
-                    <div>
+            return (
+                <div>
+                    {sender === "robot" &&
                         <img
                             src={"image/robot.png"}
                             width="50"
                         />
-                        {message}
-                    </div>
-                )
-            }
+                    }
+                    {message}
+                    {sender === "user" &&
+                        <img
+                            src={"image/user.png"}
+                            width="50"
+                        />
+                    }
+                </div>
+            )
         }
 
         const app = (
