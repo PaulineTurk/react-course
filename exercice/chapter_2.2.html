@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chapter 2.2</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script> console.log("inject ts in script")</script>
+    <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function App() {
+            return (
+                <>
+                    <Product
+                        description="Cotton socks"
+                        price="10.90"
+                        discountPrice="5.45"
+                        image="/image/cotton-socks.png"
+                    />
+                    <Product
+                        description="Tennis balls"
+                        price="6.00"
+                        image="/image/tennis-balls.png"
+                    />
+                    <Product
+                        description="Plain T-shirt"
+                        price="7.99"
+                        image="/image/plain-t-shirt.png"
+                    />
+                </>
+            )
+        }
+
+        function Product({ image, description, price, discountPrice }) {
+            return (
+                <div>
+                    <img src={image} width="150" />
+                    <p>{description}</p>
+                    {discountPrice ? (
+                        <div>
+                            <del>
+                                <p>Price: ${price}</p>
+                            </del>
+                            Discount price: ${discountPrice}
+                        </div>)
+                        :
+                        <p>Price: ${price}</p>
+                    }
+                    <button>Add to Cart</button>
+                </div>
+            )
+
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>
