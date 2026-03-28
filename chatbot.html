@@ -50,10 +50,12 @@
         function App() {
             const chatMessages = [
                 {
+                    id: "1",
                     message: "Hello chatbot_input",
                     sender: "user"
                 },
                 {
+                    id: "2",
                     message: "Hello! How can I help you?",
                     sender: "robot"
                 }
@@ -65,6 +67,7 @@
                     {chatMessages.map((chatMessage) => {
                         return (
                             <ChatMessage
+                                key={chatMessage.id}
                                 message={chatMessage.message}
                                 sender={chatMessage.sender}
                             />
