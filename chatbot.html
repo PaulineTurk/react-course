@@ -27,10 +27,12 @@
         }
 
         function ChatMessage(props) {
-            if (props.sender === "user") {
+            const { message, sender } = props
+
+            if (sender === "user") {
                 return (
                     <div>
-                        {props.message}
+                        {message}
                         <img
                             src={"image/user.png"}
                             width="50"
@@ -38,14 +40,14 @@
                     </div>
                 )
             }
-            else if (props.sender === "robot") {
+            else if (sender === "robot") {
                 return (
                     <div>
                         <img
                             src={"image/robot.png"}
                             width="50"
                         />
-                        {props.message}
+                        {message}
                     </div>
                 )
             }
