@@ -60,8 +60,15 @@
                 }
             ]
 
+            function sendMessage() {
+                console.log("send message")
+            }
+
             return (
                 <>
+                    <button onClick={sendMessage}>
+                        Send message
+                    </button>
                     {
                         chatMessages.map((chatMessage) => {
                             return (
