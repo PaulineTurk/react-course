@@ -10,6 +10,7 @@
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
 
     <script type="text/babel">
         function ChatInput({ chatMessages, setChatMessages }) {
@@ -21,14 +22,19 @@
 
 
             function sendMessage() {
+                const response = Chatbot.getResponse(inputText)
                 setChatMessages([...chatMessages,
                 {
                     id: crypto.randomUUID(),
                     message: inputText,
                     sender: "user",
+                },
+                {
+                    id: crypto.randomUUID(),
+                    message: response,
+                    sender: "robot",
                 }
                 ])
-
                 setInputText('')
             }
             return (
