@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chapter 3.1</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script type="text/babel">
+        function Counter({ count, clickHandler }) {
+            return (
+                <>
+                    <button onClick={clickHandler}>
+                        Clicked {count} {count === 1 ? "time" : "times"}
+                    </button >
+                </>
+            )
+        }
+
+        function App() {
+            const [count, setCount] = React.useState(0)
+            function clickHandler() {
+                setCount(count + 1)
+            }
+
+            function resetHandler() {
+                setCount(0)
+            }
+
+            return (
+                <>
+                    <Counter count={count} clickHandler={clickHandler} />
+                    <Counter count={count} clickHandler={clickHandler} />
+                    <button onClick={resetHandler}> Reset </button>
+                </>
+            )
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>

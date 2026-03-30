@@ -1,3 +1,5 @@
 https://www.youtube.com/watch?v=TtPXvEcE11E 
 
 - https://www.youtube.com/watch?v=TtPXvEcE11E&t=6900s : make the chat interactive <- event handling 
+
+- https://www.youtube.com/watch?v=TtPXvEcE11E&t=9700s : chapter 3 exercices

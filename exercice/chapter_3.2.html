@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chapter 3.2</title>
+</head>
+
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
+    <script type="text/babel">
+        function App() {
+            const [name, setName] = React.useState("")
+            function nameHandler(event) {
+                setName(event.target.value)
+            }
+            function resetNameHandler() {
+                setName("")
+            }
+            function exampleNameHandler() {
+                setName("Younès")
+            }
+            return (
+                <>
+                    <div>
+                        <input
+                            id="name"
+                            placeholder="Type a name"
+                            value={name}
+                            onChange={nameHandler}
+                        />
+                        <button
+                            onClick={resetNameHandler}
+                        >
+                            Reset
+                        </button>
+                        <button
+                            onClick={exampleNameHandler}
+                        >
+                            Example
+                        </button>
+                    </div>
+                    <p>Hello {name}</p>
+                </>
+            )
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>
