@@ -1,35 +1,128 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useState, useRef, useEffect } from 'react'
+import { Chatbot } from 'supersimpledev'
+import RobotImage from './assets/robot.png'
+import UserImage from './assets/user.png'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+function ChatInput({ chatMessages, setChatMessages }) {
+  const [inputText, setInputText] = useState('')
+
+  function saveInput(event) {
+    setInputText(event.target.value)
+  }
+
+
+  function sendMessage() {
+    const response = Chatbot.getResponse(inputText)
+    setChatMessages([...chatMessages,
+    {
+      id: crypto.randomUUID(),
+      message: inputText,
+      sender: "user",
+    },
+    {
+      id: crypto.randomUUID(),
+      message: response,
+      sender: "robot",
+    }
+    ])
+    setInputText('')
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="chat-input-container">
+      <input
+        className="chat-input"
+        id="chatbot_input"
+        placeholder="Send a message to Chatbot"
+        size="30"
+        onChange={saveInput}
+        value={inputText}
+      >
+      </input>
+      <button
+        className="send-button"
+        onClick={sendMessage}
+      >
+        Send
+      </button>
+    </div>
   )
 }
+
+function ChatMessage({ message, sender }) {
+  return (
+    <div className={sender == "user" ? "chat-message-user" : "chat-message-robot"}>
+      {sender === "robot" &&
+        <img className="chat-message-profile"
+          src={RobotImage}
+        />
+      }
+      <div className="chat-message-text">
+        {message}
+      </div>
+      {sender === "user" &&
+        <img className="chat-message-profile"
+          src={UserImage}
+        />
+      }
+    </div>
+  )
+}
+
+function ChatMessages({ chatMessages }) {
+  const chatMessagesRef = useRef(null);
+
+  useEffect(() => {
+    const element = chatMessagesRef.current
+    if (element) {
+      element.scrollTop = element.scrollHeight;
+    }
+  }, [chatMessages])
+
+  return (
+    <div className="chat-messages-container"
+      ref={chatMessagesRef}>
+      {
+        chatMessages.map((chatMessage) => {
+          return (
+            <ChatMessage
+              key={chatMessage.id}
+              message={chatMessage.message}
+              sender={chatMessage.sender}
+            />
+          )
+        })
+      }
+    </div>
+  )
+}
+
+function App() {
+  const [chatMessages, setChatMessages] = useState([
+    {
+      id: "1",
+      message: "Hello chatbot",
+      sender: "user"
+    },
+    {
+      id: "2",
+      message: "Hello! How can I help you?",
+      sender: "robot"
+    }
+  ])
+  return (
+    <div className="app-container">
+      <ChatMessages
+        chatMessages={chatMessages}
+      />
+      <ChatInput
+        chatMessages={chatMessages}
+        setChatMessages={setChatMessages}
+      />
+    </div>
+  )
+}
+
 
 export default App
