@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chapter 2.1</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .title {
+            font-size: 16px;
+        }
+
+        .user-input {
+            padding: 5px 15px;
+            width: 200px;
+        }
+
+        .user-container {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-bottom: 10px
+        }
+
+        .connexion-button-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px
+        }
+
+        .connexion-button {
+            background-color: rgb(0, 123, 255);
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            color: white;
+        }
+
+        .password-container {
+            display: flex;
+            gap: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="js-container"></div>
+
+    <script> console.log("inject ts in script")</script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+        function App() {
+            return (
+                <>
+                    <p className="title">
+                        Hello, welcome to my website
+                    </p>
+                    <LoginForm />
+                </>
+            )
+        }
+
+        function LoginForm() {
+            const [showPassword, setShowPassword] = React.useState(false)
+
+            function switchPasswordVisibility() {
+                setShowPassword(!showPassword)
+            }
+
+            return (
+                <>
+                    <div className="user-container">
+                        <input
+                            className="user-input"
+                            id="email"
+                            placeholder="Email"
+                        />
+                        <div>
+                            <div className="password-container">
+                                <input
+                                    className="user-input"
+                                    id="password"
+                                    placeholder="Password"
+                                    type={showPassword ? "text" : "password"}
+                                />
+                                <button onClick={switchPasswordVisibility}>
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="connexion-button-container">
+                        <button className="connexion-button">
+                            Login
+                        </button>
+                        <button className="connexion-button">
+                            Sign up
+                        </button>
+                    </div>
+                </>
+            )
+        }
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<App />);
+    </script>
+</body>
+
+</html>
