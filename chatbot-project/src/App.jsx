@@ -1,54 +1,8 @@
-import './App.css'
 import { useState, useRef, useEffect } from 'react'
-import { Chatbot } from 'supersimpledev'
+import { ChatInput } from './components/ChatInput'
 import RobotImage from './assets/robot.png'
 import UserImage from './assets/user.png'
-
-
-function ChatInput({ chatMessages, setChatMessages }) {
-  const [inputText, setInputText] = useState('')
-
-  function saveInput(event) {
-    setInputText(event.target.value)
-  }
-
-
-  function sendMessage() {
-    const response = Chatbot.getResponse(inputText)
-    setChatMessages([...chatMessages,
-    {
-      id: crypto.randomUUID(),
-      message: inputText,
-      sender: "user",
-    },
-    {
-      id: crypto.randomUUID(),
-      message: response,
-      sender: "robot",
-    }
-    ])
-    setInputText('')
-  }
-  return (
-    <div className="chat-input-container">
-      <input
-        className="chat-input"
-        id="chatbot_input"
-        placeholder="Send a message to Chatbot"
-        size="30"
-        onChange={saveInput}
-        value={inputText}
-      >
-      </input>
-      <button
-        className="send-button"
-        onClick={sendMessage}
-      >
-        Send
-      </button>
-    </div>
-  )
-}
+import './App.css'
 
 function ChatMessage({ message, sender }) {
   return (

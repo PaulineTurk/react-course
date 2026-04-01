@@ -5,3 +5,5 @@ https://www.youtube.com/watch?v=TtPXvEcE11E
 - https://www.youtube.com/watch?v=TtPXvEcE11E&t=9700s : chapter 3 exercices
 
 - https://www.youtube.com/watch?v=TtPXvEcE11E&t=13680s : chapter 4 exercices
+
+- https://www.youtube.com/watch?v=TtPXvEcE11E&t=16560s : separate code in the new vite project
