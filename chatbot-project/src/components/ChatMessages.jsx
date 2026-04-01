@@ -1,6 +1,6 @@
 import { ChatMessage } from './ChatMessage';
 import { useRef, useEffect } from 'react'
-
+import './ChatMessages.css'
 
 export default function ChatMessages({ chatMessages }) {
     const chatMessagesRef = useRef(null);
