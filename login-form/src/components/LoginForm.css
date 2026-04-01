@@ -1,0 +1,31 @@
+.user-input {
+    padding: 5px 15px;
+    width: 200px;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 10px
+}
+
+.connexion-button-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px
+}
+
+.connexion-button {
+    background-color: rgb(0, 123, 255);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+}
+
+.password-container {
+    display: flex;
+    gap: 10px
+}
