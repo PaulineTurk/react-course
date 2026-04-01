@@ -1,28 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChatInput } from './components/ChatInput'
-import RobotImage from './assets/robot.png'
-import UserImage from './assets/user.png'
+import { ChatMessage } from './components/ChatMessage';
 import './App.css'
-
-function ChatMessage({ message, sender }) {
-  return (
-    <div className={sender == "user" ? "chat-message-user" : "chat-message-robot"}>
-      {sender === "robot" &&
-        <img className="chat-message-profile"
-          src={RobotImage}
-        />
-      }
-      <div className="chat-message-text">
-        {message}
-      </div>
-      {sender === "user" &&
-        <img className="chat-message-profile"
-          src={UserImage}
-        />
-      }
-    </div>
-  )
-}
 
 function ChatMessages({ chatMessages }) {
   const chatMessagesRef = useRef(null);
