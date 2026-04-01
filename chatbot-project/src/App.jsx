@@ -1,35 +1,7 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { ChatInput } from './components/ChatInput'
-import { ChatMessage } from './components/ChatMessage';
+import ChatMessages from './components/ChatMessages'
 import './App.css'
-
-function ChatMessages({ chatMessages }) {
-  const chatMessagesRef = useRef(null);
-
-  useEffect(() => {
-    const element = chatMessagesRef.current
-    if (element) {
-      element.scrollTop = element.scrollHeight;
-    }
-  }, [chatMessages])
-
-  return (
-    <div className="chat-messages-container"
-      ref={chatMessagesRef}>
-      {
-        chatMessages.map((chatMessage) => {
-          return (
-            <ChatMessage
-              key={chatMessage.id}
-              message={chatMessage.message}
-              sender={chatMessage.sender}
-            />
-          )
-        })
-      }
-    </div>
-  )
-}
 
 function App() {
   const [chatMessages, setChatMessages] = useState([
