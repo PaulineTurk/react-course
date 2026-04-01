@@ -14,11 +14,23 @@
      justify-content: start;
  }
 
- .chat-message-text {
+ .chat-message-container {
      background-color: rgb(238, 238, 238);
-     padding: 12px 20px;
      border-radius: 10px;
      max-width: 300px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .chat-message-texte {
+     padding: 12px 20px;
+ }
+
+ .chat-message-time {
+     padding-left: 20px;
+     padding-bottom: 15px;
+     color: gray;
+     font-size: 15px;
  }
 
  .chat-message-profile {

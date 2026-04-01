@@ -1,10 +1,16 @@
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getTime } from "../utils/time"
 import { Chatbot } from 'supersimpledev'
 import './ChatInput.css'
 
 export function ChatInput({ chatMessages, setChatMessages }) {
     const [inputText, setInputText] = useState('')
+
+    useEffect(() => {
+        Chatbot.addResponses({
+            "bonjour": "Bonjour ! Comment puis-je t'aider ?",
+        })
+    }, [])
 
     function saveInput(event) {
         setInputText(event.target.value)
@@ -18,11 +24,14 @@ export function ChatInput({ chatMessages, setChatMessages }) {
             id: crypto.randomUUID(),
             message: inputText,
             sender: "user",
+            time: getTime()
+
         },
         {
             id: crypto.randomUUID(),
             message: response,
             sender: "robot",
+            time: getTime()
         }
         ])
         setInputText('')

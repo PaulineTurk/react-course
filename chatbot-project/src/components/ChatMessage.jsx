@@ -2,7 +2,7 @@ import RobotImage from '../assets/robot.png'
 import UserImage from '../assets/user.png'
 import './ChatMessage.css'
 
-export function ChatMessage({ message, sender }) {
+export function ChatMessage({ message, sender, time }) {
     return (
         <div className={sender == "user" ? "chat-message-user" : "chat-message-robot"}>
             {sender === "robot" &&
@@ -10,9 +10,15 @@ export function ChatMessage({ message, sender }) {
                     src={RobotImage}
                 />
             }
-            <div className="chat-message-text">
-                {message}
+            <div className="chat-message-container">
+                <div className="chat-message-texte">
+                    {message}
+                </div>
+                <div className='chat-message-time'>
+                    {time}
+                </div>
             </div>
+
             {sender === "user" &&
                 <img className="chat-message-profile"
                     src={UserImage}

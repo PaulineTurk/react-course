@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { getTime } from "./utils/time"
 import { ChatInput } from './components/ChatInput'
 import ChatMessages from './components/ChatMessages'
 import './App.css'
@@ -8,12 +9,14 @@ function App() {
     {
       id: "1",
       message: "Hello chatbot",
-      sender: "user"
+      sender: "user",
+      time: getTime()
     },
     {
       id: "2",
       message: "Hello! How can I help you?",
-      sender: "robot"
+      sender: "robot",
+      time: getTime()
     }
   ])
   return (
